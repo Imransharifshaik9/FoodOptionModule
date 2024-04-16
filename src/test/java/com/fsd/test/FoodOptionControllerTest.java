@@ -23,7 +23,7 @@ import com.fsd.feign.EventClient;
 import com.fsd.service.FoodOptionService;
 
 @SpringBootTest
-public class FoodOptionControllerTest {
+  class FoodOptionControllerTest {
 
     @Mock
     private FoodOptionService foodOptionService;
@@ -35,7 +35,7 @@ public class FoodOptionControllerTest {
     private FoodOptionController foodOptionController;
 
     @Test
-    public void testCreateFoodOption() throws Exception {
+      void testCreateFoodOption() throws Exception {
         FoodOption foodOption = new FoodOption(1L, "Food", 10.0, "Description", 1L);
         when(foodOptionService.createFoodOption(foodOption)).thenReturn(foodOption);
 
@@ -46,7 +46,7 @@ public class FoodOptionControllerTest {
     }
 
     @Test
-    public void testGetAllFoodOptions() throws Exception {
+      void testGetAllFoodOptions() throws Exception {
         List<FoodOption> foodOptions = new ArrayList<>();
         foodOptions.add(new FoodOption(1L, "Food1", 10.0, "Description1", 1L));
         foodOptions.add(new FoodOption(2L, "Food2", 20.0, "Description2", 2L));
@@ -59,7 +59,7 @@ public class FoodOptionControllerTest {
     }
 
     @Test
-    public void testGetFoodOptionById() throws Exception {
+      void testGetFoodOptionById() throws Exception {
         Long id = 1L;
         FoodOption foodOption = new FoodOption(id, "Food1", 10.0, "Description1", 1L);
         when(foodOptionService.getFoodOptionById(id)).thenReturn(foodOption);
@@ -71,7 +71,7 @@ public class FoodOptionControllerTest {
     }
 
     @Test
-    public void testUpdateFoodOption() throws Exception {
+      void testUpdateFoodOption() throws Exception {
         Long id = 1L;
         FoodOption foodOption = new FoodOption(id, "Food1", 10.0, "Description1", 1L);
         when(foodOptionService.updateFoodOption(id, foodOption)).thenReturn(foodOption);
@@ -83,7 +83,7 @@ public class FoodOptionControllerTest {
     }
 
     @Test
-    public void testDeleteFoodOption() throws Exception {
+      void testDeleteFoodOption() throws Exception {
         Long id = 1L;
         ResponseEntity<Void> responseEntity = foodOptionController.deleteFoodOption(id);
 
@@ -92,7 +92,7 @@ public class FoodOptionControllerTest {
     }
 
     @Test
-    public void testGetAllFoodOptionsByEventId() throws Exception {
+      void testGetAllFoodOptionsByEventId() throws Exception {
         Long eventId = 1L;
         List<FoodOption> foodOptions = new ArrayList<>();
         foodOptions.add(new FoodOption(1L, "Food1", 10.0, "Description1", eventId));
@@ -105,7 +105,7 @@ public class FoodOptionControllerTest {
     }
 
     @Test
-    public void testGetAllEvents() throws Exception {
+      void testGetAllEvents() throws Exception {
         Long eventId = 1L;
         Event event = new Event();
         when(eventClient.getEventById(eventId)).thenReturn(event);
@@ -117,7 +117,7 @@ public class FoodOptionControllerTest {
     
     
     @Test
-    public void testCreateFoodOptionException() {
+      void testCreateFoodOptionException() {
         String errorMessage = "Error creating food option";
         CreateFoodOptionException exception = assertThrows(CreateFoodOptionException.class, () -> {
             throw new CreateFoodOptionException(errorMessage);

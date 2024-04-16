@@ -29,7 +29,7 @@ import com.fsd.repository.FoodOptionRepository;
 import com.fsd.service.FoodOptionService;
  
 @SpringBootTest
-public class FoodOptionServiceTest {
+  class FoodOptionServiceTest {
  
     @Mock
     private FoodOptionRepository foodOptionRepository;
@@ -41,7 +41,7 @@ public class FoodOptionServiceTest {
     private FoodOptionService foodOptionService;
  
     @Test
-    public void testCreateFoodOption() {
+      void testCreateFoodOption() {
         FoodOption foodOption = new FoodOption(1L, "Food", 10.0, "Description", 1L);
         when(foodOptionRepository.save(foodOption)).thenReturn(foodOption);
  
@@ -51,7 +51,7 @@ public class FoodOptionServiceTest {
     }
  
     @Test
-    public void testGetAllFoodOptions() {
+      void testGetAllFoodOptions() {
         List<FoodOption> foodOptions = new ArrayList<>();
         foodOptions.add(new FoodOption(1L, "Food1", 10.0, "Description1", 1L));
         foodOptions.add(new FoodOption(2L, "Food2", 20.0, "Description2", 2L));
@@ -65,7 +65,7 @@ public class FoodOptionServiceTest {
  
     // Similarly, write test cases for other methods of FoodOptionService
 //    @Test
-//    public void testGetAllFoodOptionsByEventId() {
+//      void testGetAllFoodOptionsByEventId() {
 //        Long eventId = 1L;
 //        List<FoodOption> foodOptions = new ArrayList<>();
 //        foodOptions.add(new FoodOption(1L, "Food1", 10.0, "Description1", eventId));
@@ -79,7 +79,7 @@ public class FoodOptionServiceTest {
     
     
     @Test
-    public void testDeleteFoodOptionException() {
+      void testDeleteFoodOptionException() {
         String errorMessage = "Error deleting food option";
         DeleteFoodOptionException exception = assertThrows(DeleteFoodOptionException.class, () -> {
             throw new DeleteFoodOptionException(errorMessage);
@@ -89,7 +89,7 @@ public class FoodOptionServiceTest {
     }
 
     @Test
-    public void testGetAllFoodOptionsException() {
+      void testGetAllFoodOptionsException() {
         String errorMessage = "Error getting all food options";
         GetAllFoodOptionsException exception = assertThrows(GetAllFoodOptionsException.class, () -> {
             throw new GetAllFoodOptionsException(errorMessage);
@@ -99,7 +99,7 @@ public class FoodOptionServiceTest {
     }
 
     @Test
-    public void testGetFoodOptionByIdException() {
+      void testGetFoodOptionByIdException() {
         String errorMessage = "Error getting food option by ID";
         GetFoodOptionByIdException exception = assertThrows(GetFoodOptionByIdException.class, () -> {
             throw new GetFoodOptionByIdException(errorMessage);
@@ -109,7 +109,7 @@ public class FoodOptionServiceTest {
     }
 
     @Test
-    public void testGetAllFoodOptionsByEventIdException() {
+      void testGetAllFoodOptionsByEventIdException() {
         String errorMessage = "Error getting all food options by event ID";
         GetAllFoodOptionsByEventIdException exception = assertThrows(GetAllFoodOptionsByEventIdException.class, () -> {
             throw new GetAllFoodOptionsByEventIdException(errorMessage);
@@ -119,7 +119,7 @@ public class FoodOptionServiceTest {
     }
 
     @Test
-    public void testUpdateFoodOptionException() {
+      void testUpdateFoodOptionException() {
         String errorMessage = "Error updating food option";
         UpdateFoodOptionException exception = assertThrows(UpdateFoodOptionException.class, () -> {
             throw new UpdateFoodOptionException(errorMessage);
@@ -131,7 +131,7 @@ public class FoodOptionServiceTest {
     
 
     @Test
-    public void testCreateFoodOption_Exception() {
+      void testCreateFoodOption_Exception() {
         FoodOption foodOption = new FoodOption(1L, "Food", 10.0, "Description", 1L);
         when(foodOptionRepository.save(foodOption)).thenThrow(new RuntimeException("Database connection error"));
 
@@ -143,7 +143,7 @@ public class FoodOptionServiceTest {
     
 
     @Test
-    public void testGetFoodOptionById() {
+      void testGetFoodOptionById() {
         Long id = 1L;
         FoodOption foodOption = new FoodOption(id, "Food1", 10.0, "Description1", 1L);
         when(foodOptionRepository.findById(id)).thenReturn(Optional.of(foodOption));
@@ -154,7 +154,7 @@ public class FoodOptionServiceTest {
     }
 
     @Test
-    public void testGetFoodOptionById_NotFound() {
+      void testGetFoodOptionById_NotFound() {
         Long id = 1L;
         when(foodOptionRepository.findById(id)).thenReturn(Optional.empty());
 
@@ -164,7 +164,7 @@ public class FoodOptionServiceTest {
     }
 
     @Test
-    public void testGetFoodOptionById_Exception() {
+      void testGetFoodOptionById_Exception() {
         Long id = 1L;
         when(foodOptionRepository.findById(id)).thenThrow(new RuntimeException("Database connection error"));
 
@@ -174,7 +174,7 @@ public class FoodOptionServiceTest {
     }
 
     @Test
-    public void testUpdateFoodOption() {
+      void testUpdateFoodOption() {
         Long id = 1L;
         FoodOption foodOption = new FoodOption(id, "Food1", 10.0, "Description1", 1L);
         when(foodOptionRepository.existsById(id)).thenReturn(true);
@@ -186,7 +186,7 @@ public class FoodOptionServiceTest {
     }
 
     @Test
-    public void testUpdateFoodOption_NotFound() {
+      void testUpdateFoodOption_NotFound() {
         Long id = 1L;
         FoodOption foodOption = new FoodOption(id, "Food1", 10.0, "Description1", 1L);
         when(foodOptionRepository.existsById(id)).thenReturn(false);
@@ -197,7 +197,7 @@ public class FoodOptionServiceTest {
     }
 
     @Test
-    public void testUpdateFoodOption_Exception() {
+      void testUpdateFoodOption_Exception() {
         Long id = 1L;
         FoodOption foodOption = new FoodOption(id, "Food1", 10.0, "Description1", 1L);
         when(foodOptionRepository.existsById(id)).thenReturn(true);
@@ -209,7 +209,7 @@ public class FoodOptionServiceTest {
     }
 
     @Test
-    public void testDeleteFoodOption() {
+      void testDeleteFoodOption() {
         Long id = 1L;
         when(foodOptionRepository.existsById(id)).thenReturn(true);
 
@@ -219,7 +219,7 @@ public class FoodOptionServiceTest {
     }
 
     @Test
-    public void testDeleteFoodOption_NotFound() {
+      void testDeleteFoodOption_NotFound() {
         Long id = 1L;
         when(foodOptionRepository.existsById(id)).thenReturn(false);
 
@@ -229,7 +229,7 @@ public class FoodOptionServiceTest {
     }
 
     @Test
-    public void testDeleteFoodOption_Exception() {
+      void testDeleteFoodOption_Exception() {
         Long id = 1L;
         when(foodOptionRepository.existsById(id)).thenThrow(new RuntimeException("Database connection error"));
 
@@ -239,7 +239,7 @@ public class FoodOptionServiceTest {
     }
 
     @Test
-    public void testGetAllFoodOptionsByEventId() {
+      void testGetAllFoodOptionsByEventId() {
         Long eventId = 1L;
         List<FoodOption> foodOptions = new ArrayList<>();
         foodOptions.add(new FoodOption(1L, "Food1", 10.0, "Description1", eventId));
@@ -252,7 +252,7 @@ public class FoodOptionServiceTest {
     }
 
     @Test
-    public void testGetAllFoodOptionsByEventId_EventNotFound() {
+      void testGetAllFoodOptionsByEventId_EventNotFound() {
         Long eventId = 1L;
         when(eventClient.getEventById(eventId)).thenReturn(null);
 
@@ -262,7 +262,7 @@ public class FoodOptionServiceTest {
     }
 
     @Test
-    public void testGetAllFoodOptionsByEventId_Exception() {
+      void testGetAllFoodOptionsByEventId_Exception() {
         Long eventId = 1L;
         when(eventClient.getEventById(eventId)).thenThrow(new RuntimeException("Service unavailable"));
 
@@ -272,7 +272,7 @@ public class FoodOptionServiceTest {
     }
     
     @Test
-    public void testEventConstructorAndGetters() {
+      void testEventConstructorAndGetters() {
         Long id = 1L;
         String name = "Event";
         String description = "Description";
@@ -306,7 +306,7 @@ public class FoodOptionServiceTest {
     }
 
     @Test
-    public void testEventSetters() {
+      void testEventSetters() {
         Event event = new Event();
 
         Long id = 1L;
@@ -353,7 +353,7 @@ public class FoodOptionServiceTest {
     }
     
     @Test
-    public void testFoodOptionConstructorAndGetters() {
+      void testFoodOptionConstructorAndGetters() {
         Long id = 1L;
         String name = "Food";
         double price = 10.0;
@@ -370,7 +370,7 @@ public class FoodOptionServiceTest {
     }
 
     @Test
-    public void testFoodOptionSetters() {
+      void testFoodOptionSetters() {
         FoodOption foodOption = new FoodOption();
 
         Long id = 1L;
